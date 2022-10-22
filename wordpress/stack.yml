@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+
+  wordpress_saqib:
+    image: wordpress
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      WORDPRESS_DB_HOST: db_saqib
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: saqib123!
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress:/var/www/html
+
+  db_saqib:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: saqib123!
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress_saqib:
+  db_saqib:
