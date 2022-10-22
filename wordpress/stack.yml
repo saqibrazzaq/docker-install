@@ -15,6 +15,19 @@ services:
     volumes:
       - wordpress_saqib:/var/www/html
 
+  wordpress_rabia:
+    image: wordpress
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      WORDPRESS_DB_HOST: db_saqib
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: saqib123!
+      WORDPRESS_DB_NAME: wordpress_rabia
+    volumes:
+      - wordpress_rabia:/var/www/html
+  
   db_saqib:
     image: mysql:5.7
     restart: always
@@ -28,4 +41,5 @@ services:
 
 volumes:
   wordpress_saqib:
+  wordpress_rabia:
   db_saqib:
