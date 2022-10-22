@@ -12,22 +12,11 @@ services:
       WORDPRESS_DB_USER: wpuser
       WORDPRESS_DB_PASSWORD: saqib123!
       WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wordpress_saqib
     volumes:
       - wordpress_saqib:/var/www/html
 
-  wordpress_rabia:
-    image: wordpress
-    restart: always
-    ports:
-      - 8082:80
-    environment:
-      WORDPRESS_DB_HOST: db_saqib
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: saqib123!
-      WORDPRESS_DB_NAME: wordpress_rabia
-    volumes:
-      - wordpress_rabia:/var/www/html
-  
   db_saqib:
     image: mysql:5.7
     restart: always
@@ -36,10 +25,45 @@ services:
       MYSQL_USER: wpuser
       MYSQL_PASSWORD: saqib123!
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    networks:
+      - wordpress_saqib
     volumes:
       - db_saqib:/var/lib/mysql
+  
+  wordpress_rabia:
+    image: wordpress
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      WORDPRESS_DB_HOST: db_rabia
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: saqib123!
+      WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wordpress_rabia
+    volumes:
+      - wordpress_rabia:/var/www/html
+  
+  db_rabia:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: saqib123!
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    networks:
+      - wordpress_rabia
+    volumes:
+      - db_rabia:/var/lib/mysql
 
 volumes:
   wordpress_saqib:
   wordpress_rabia:
   db_saqib:
+  db_rabia:
+
+networks:
+  wordpress_saqib:
+  wordpress_rabia:
