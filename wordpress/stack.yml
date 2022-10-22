@@ -13,7 +13,7 @@ services:
       WORDPRESS_DB_PASSWORD: saqib123!
       WORDPRESS_DB_NAME: wordpress
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_saqib:/var/www/html
 
   db_saqib:
     image: mysql:5.7
@@ -24,7 +24,7 @@ services:
       MYSQL_PASSWORD: saqib123!
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
-      - db:/var/lib/mysql
+      - db_saqib:/var/lib/mysql
 
 volumes:
   wordpress_saqib:
