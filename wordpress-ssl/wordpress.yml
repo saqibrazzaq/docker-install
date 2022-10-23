@@ -30,5 +30,5 @@ volumes:
   db_data:
 
 networks:
-default:
-  name: nginx-proxy
+  default:
+    name: nginx-proxy
