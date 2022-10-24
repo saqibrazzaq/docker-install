@@ -57,7 +57,7 @@ services:
     restart: always
     environment:
       VIRTUAL_HOST: blog.saqibrazzaq.com
-      LETSENCRYPT_HOST: saqibrazzaq.com
+      LETSENCRYPT_HOST: blog.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       WORDPRESS_DB_HOST: db_blog_saqibrazzaq_com:3306
       WORDPRESS_DB_USER: saqibrazzaq
