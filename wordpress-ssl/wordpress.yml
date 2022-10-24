@@ -12,6 +12,8 @@ services:
       MYSQL_USER: saqibrazzaq
       MYSQL_PASSWORD: saqib123!
     container_name: db_saqibrazzaq_com
+    networks:
+      - net_saqibrazzaq_com
 
   wp_saqibrazzaq_com:
     depends_on:
@@ -26,9 +28,48 @@ services:
       WORDPRESS_DB_USER: saqibrazzaq
       WORDPRESS_DB_PASSWORD: saqib123!
     container_name: wp_saqibrazzaq_com
+    networks:
+      - net_saqibrazzaq_com
+      - nginx-proxy
+
+  db_blog_saqibrazzaq_com:
+    image: mysql:5.7
+    volumes:
+      - db_blog_saqibrazzaq_com:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: saqib123!
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: saqibrazzaq
+      MYSQL_PASSWORD: saqib123!
+    container_name: db_blog_saqibrazzaq_com
+    networks:
+      - net_blog_saqibrazzaq_com
+
+  wp_blog_saqibrazzaq_com:
+    depends_on:
+      - db_blog_saqibrazzaq_com
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: always
+    environment:
+      VIRTUAL_HOST: blog.saqibrazzaq.com
+      WORDPRESS_DB_HOST: db_blog_saqibrazzaq_com:3306
+      WORDPRESS_DB_USER: saqibrazzaq
+      WORDPRESS_DB_PASSWORD: saqib123!
+    container_name: wp_blog_saqibrazzaq_com
+    networks:
+      - net_blog_saqibrazzaq_com
+      - nginx-proxy
+
 volumes:
   db_saqibrazzaq_com:
+  db_blog_saqibrazzaq_com:
 
 networks:
-  default:
-    name: nginx-proxy
+  nginx-proxy:
+  net_saqibrazzaq_com:
+    internal: true
+  net_blog_saqibrazzaq_com:
+    internal: true
