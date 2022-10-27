@@ -25,5 +25,15 @@ services:
     depends_on:
       - db_xptrackerscs
 
+  xptrackercs_web:
+    image: saqibrazzaq/xptrackercs_web
+    container_name: xptrackercs_web
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - xptrackercs_api
+
 volumes:
   db_xptrackerscs:
