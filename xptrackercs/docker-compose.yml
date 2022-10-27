@@ -22,9 +22,6 @@ services:
     ports:
       - "50530:80"
       - "50531:443"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     depends_on:
       - db_xptrackerscs
 
