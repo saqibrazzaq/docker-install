@@ -13,5 +13,20 @@ services:
     ports:
       - "1437:1433"
 
+  xptrackercs_api:
+    image: saqibrazzaq/xptrackercs_api
+    container_name: xptrackercs_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "50530:80"
+      - "50531:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - db_xptrackerscs
+
 volumes:
   db_xptrackerscs:
