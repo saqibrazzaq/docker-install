@@ -3,6 +3,7 @@ version: "3"
 services:
   db_xptrackerscs:
     image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: xptrackercs_db
     volumes:
       - db_xptrackerscs:/var/opt/mssql/data
     environment:
