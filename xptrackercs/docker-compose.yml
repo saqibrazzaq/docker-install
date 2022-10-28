@@ -12,6 +12,7 @@ services:
       MSSQL_PID: "Express"
     ports:
       - "1437:1433"
+    restart: always
 
   xptrackercs_api:
     image: saqibrazzaq/xptrackercs_api
@@ -24,6 +25,7 @@ services:
       - "50531:443"
     depends_on:
       - xptrackercs_db
+    restart: always
 
   xptrackercs_web:
     image: saqibrazzaq/xptrackercs_web
@@ -34,6 +36,7 @@ services:
     tty: true
     depends_on:
       - xptrackercs_api
+    restart: always
 
 volumes:
   xptrackercs_db:
