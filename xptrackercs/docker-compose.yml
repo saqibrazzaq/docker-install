@@ -1,11 +1,11 @@
 version: "3"
 
 services:
-  db_xptrackerscs:
+  xptrackercs_db:
     image: mcr.microsoft.com/mssql/server:2017-latest
     container_name: xptrackercs_db
     volumes:
-      - db_xptrackerscs:/var/opt/mssql/data
+      - xptrackercs_db:/var/opt/mssql/data
     environment:
       SA_PASSWORD: "Saqib123!"
       ACCEPT_EULA: "Y"
@@ -23,7 +23,7 @@ services:
       - "50530:80"
       - "50531:443"
     depends_on:
-      - db_xptrackerscs
+      - xptrackercs_db
 
   xptrackercs_web:
     image: saqibrazzaq/xptrackercs_web
@@ -36,4 +36,4 @@ services:
       - xptrackercs_api
 
 volumes:
-  db_xptrackerscs:
+  xptrackercs_db:
