@@ -20,6 +20,9 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:80;https://+:443
+      ASPNETCORE_HTTPS_PORT: 443
+      DOMAIN_NAME: xptrackercs-api.saqibrazzaq.com
+      USE_STAGING_SERVER: false
       VIRTUAL_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
