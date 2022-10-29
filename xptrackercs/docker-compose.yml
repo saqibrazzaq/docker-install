@@ -18,7 +18,7 @@ services:
     image: saqibrazzaq/xptrackercs_api
     container_name: xptrackercs_api
     environment:
-      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_URLS: http://+:80;https://+:443
       VIRTUAL_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_HOST: xptrackercs-api.saqibrazzaq.com
