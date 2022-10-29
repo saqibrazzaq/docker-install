@@ -27,7 +27,7 @@ services:
     #  - "80:80"
     #  - "443:443"
     expose:
-      - 80
+      - 80,443
     depends_on:
       - xptrackercs_db
     restart: always
@@ -42,7 +42,7 @@ services:
     #ports:
     #  - '80:3000'
     expose:
-      - 80
+      - 80,443
     stdin_open: true
     tty: true
     depends_on:
