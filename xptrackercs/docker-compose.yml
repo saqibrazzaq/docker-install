@@ -11,18 +11,23 @@ services:
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Express"
     ports:
-      - "1437:1433"
+      - "1433"
     restart: always
 
   xptrackercs_api:
     image: saqibrazzaq/xptrackercs_api
     container_name: xptrackercs_api
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-    ports:
-      - "50530:80"
-      - "50531:443"
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      VIRTUAL_HOST: xptrackercs-api.saqibrazzaq.com
+      LETSENCRYPT_HOST: xptrackercs-api.saqibrazzaq.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+    #ports:
+    #  - "80:80"
+    #  - "443:443"
+    expose:
+      - 80
     depends_on:
       - xptrackercs_db
     restart: always
@@ -30,8 +35,14 @@ services:
   xptrackercs_web:
     image: saqibrazzaq/xptrackercs_web
     container_name: xptrackercs_web
-    ports:
-      - '80:3000'
+    environment:
+      VIRTUAL_HOST: xptrackercs-web.saqibrazzaq.com
+      LETSENCRYPT_HOST: xptrackercs-web.saqibrazzaq.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+    #ports:
+    #  - '80:3000'
+    expose:
+      - 80
     stdin_open: true
     tty: true
     depends_on:
