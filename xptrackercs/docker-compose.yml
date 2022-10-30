@@ -28,8 +28,8 @@ services:
       VIRTUAL_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-    #ports:
-    #  - "80:80"
+    ports:
+      - "80:80"
     #  - "443:443"
     expose:
       - 80
@@ -48,8 +48,8 @@ services:
       LETSENCRYPT_HOST: xptrackercs-web.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       HTTPS: true
-    #ports:
-    #  - '80:3000'
+    ports:
+      - '80:80'
     expose:
       - 80
     stdin_open: true
