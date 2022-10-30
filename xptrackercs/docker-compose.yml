@@ -42,8 +42,8 @@ services:
       CHOKIDAR_USEPOLLING: true
     expose:
       - 80
-    stdin_open: true
-    tty: true
+    #stdin_open: true
+    #tty: true
     depends_on:
       - xptrackercs_api
     restart: always
