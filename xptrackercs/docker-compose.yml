@@ -13,6 +13,8 @@ services:
     ports:
       - "1433"
     restart: always
+    networks:
+      - xptrackercs_db
 
   xptrackercs_api:
     image: saqibrazzaq/xptrackercs_api
@@ -35,6 +37,9 @@ services:
     depends_on:
       - xptrackercs_db
     restart: always
+    networks:
+      - nginx-proxy
+      - xptrackercs_db
 
   xptrackercs_web:
     image: saqibrazzaq/xptrackercs_web
@@ -54,6 +59,14 @@ services:
     depends_on:
       - xptrackercs_api
     restart: always
+    networks:
+      - nginx-proxy
 
 volumes:
   xptrackercs_db:
+
+networks:
+  nginx-proxy:
+    external: true
+  xptrackercs_db:
+    internal: true
