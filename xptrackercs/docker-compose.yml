@@ -49,6 +49,9 @@ services:
     restart: always
     networks:
       - nginx-proxy
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
 
 volumes:
   xptrackercs_db:
