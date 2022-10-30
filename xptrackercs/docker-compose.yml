@@ -20,17 +20,9 @@ services:
     image: saqibrazzaq/xptrackercs_api
     container_name: xptrackercs_api
     environment:
-      #ASPNETCORE_ENVIRONMENT: Production
-      #ASPNETCORE_URLS: http://+:80;https://+:443
-      #ASPNETCORE_HTTPS_PORT: 443
-      #DOMAIN_NAME: xptrackercs-api.saqibrazzaq.com
-      #USE_STAGING_SERVER: false
       VIRTUAL_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_HOST: xptrackercs-api.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-    #ports:
-    #  - "80:80"
-    #  - "443:443"
     expose:
       - 80
     depends_on:
@@ -47,9 +39,7 @@ services:
       VIRTUAL_HOST: xptrackercs-web.saqibrazzaq.com
       LETSENCRYPT_HOST: xptrackercs-web.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-      HTTPS: true
-    #ports:
-    #  - '80:3000'
+      CHOKIDAR_USEPOLLING: true
     expose:
       - 80
     stdin_open: true
