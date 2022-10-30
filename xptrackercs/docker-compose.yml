@@ -50,8 +50,7 @@ services:
     networks:
       - nginx-proxy
     volumes:
-      - ./:/frontend
-      - /frontend/node_modules
+      - ./src:/app/src
 
 volumes:
   xptrackercs_db:
