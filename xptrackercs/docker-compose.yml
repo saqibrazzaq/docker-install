@@ -40,7 +40,6 @@ services:
       LETSENCRYPT_HOST: xptrackercs-web.saqibrazzaq.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       CHOKIDAR_USEPOLLING: true
-      REACT_APP_API_BASE_URL: "https://xptrackercs-api.saqibrazzaq.com/api"
     expose:
       - 80
     #stdin_open: true
