@@ -7,10 +7,10 @@ services:
       - db_saqibrazzaq_com:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: saqib123!
+      MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: wordpress
       MYSQL_USER: saqibrazzaq
-      MYSQL_PASSWORD: saqib123!
+      MYSQL_PASSWORD: pass
     container_name: db_saqibrazzaq_com
     networks:
       - net_saqibrazzaq_com
@@ -26,11 +26,42 @@ services:
       VIRTUAL_HOST: saqibrazzaq.com
       WORDPRESS_DB_HOST: db_saqibrazzaq_com:3306
       WORDPRESS_DB_USER: saqibrazzaq
-      WORDPRESS_DB_PASSWORD: saqib123!
+      WORDPRESS_DB_PASSWORD: pass
     container_name: wp_saqibrazzaq_com
     networks:
       - nginx-proxy
       - net_saqibrazzaq_com
+
+  db_efcorebeginner_com:
+    image: mysql:5.7
+    volumes:
+      - db_efcorebeginner_com:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: saqibrazzaq
+      MYSQL_PASSWORD: pass
+    container_name: db_efcorebeginner_com
+    networks:
+      - net_efcorebeginner_com
+    
+  wp_efcorebeginner_com:
+    depends_on:
+      - db_efcorebeginner_com
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: always
+    environment:
+      VIRTUAL_HOST: efcorebeginner.com
+      WORDPRESS_DB_HOST: db_efcorebeginner_com:3306
+      WORDPRESS_DB_USER: saqibrazzaq
+      WORDPRESS_DB_PASSWORD: pass
+    container_name: wp_efcorebeginner_com
+    networks:
+      - nginx-proxy
+      - net_efcorebeginner_com
     
   db_blog_saqibrazzaq_com:
     image: mysql:5.7
@@ -38,10 +69,10 @@ services:
       - db_blog_saqibrazzaq_com:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: saqib123!
+      MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: wordpress
       MYSQL_USER: saqibrazzaq
-      MYSQL_PASSWORD: saqib123!
+      MYSQL_PASSWORD: pass
     container_name: db_blog_saqibrazzaq_com
     networks:
       - net_blog_saqibrazzaq_com
@@ -57,7 +88,7 @@ services:
       VIRTUAL_HOST: blog.saqibrazzaq.com
       WORDPRESS_DB_HOST: db_blog_saqibrazzaq_com:3306
       WORDPRESS_DB_USER: saqibrazzaq
-      WORDPRESS_DB_PASSWORD: saqib123!
+      WORDPRESS_DB_PASSWORD: pass
     container_name: wp_blog_saqibrazzaq_com
     networks:
       - nginx-proxy
@@ -66,6 +97,7 @@ services:
 volumes:
   db_saqibrazzaq_com:
   db_blog_saqibrazzaq_com:
+  db_efcorebeginner_com:
 
 networks:
   nginx-proxy:
@@ -73,4 +105,6 @@ networks:
   net_saqibrazzaq_com:
     internal: true
   net_blog_saqibrazzaq_com:
+    internal: true
+  net_efcorebeginner_com:
     internal: true
