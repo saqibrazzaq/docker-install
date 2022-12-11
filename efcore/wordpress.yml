@@ -24,6 +24,8 @@ services:
     restart: always
     environment:
       VIRTUAL_HOST: efcorebeginner.com
+      LETSENCRYPT_HOST: efcorebeginner.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       WORDPRESS_DB_HOST: db_efcorebeginner:3306
       WORDPRESS_DB_USER: saqibrazzaq
       WORDPRESS_DB_PASSWORD: saqib123!
