@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  db_efcorebeginner:
+    image: mysql:5.7
+    volumes:
+      - db_efcorebeginner:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: saqibrazzaq
+      MYSQL_PASSWORD: pass
+    container_name: db_efcorebeginner
+    networks:
+      - net_efcorebeginner
+    
+  wp_efcorebeginner:
+    depends_on:
+      - db_efcorebeginner
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: always
+    environment:
+      VIRTUAL_HOST: saqibrazzaq.com
+      WORDPRESS_DB_HOST: db_efcorebeginner:3306
+      WORDPRESS_DB_USER: saqibrazzaq
+      WORDPRESS_DB_PASSWORD: pass
+    container_name: wp_efcorebeginner
+    networks:
+      - nginx-proxy
+      - net_efcorebeginner
+
+  volumes:
+  db_efcorebeginner:
+
+networks:
+  nginx-proxy:
+    external: true
+  net_efcorebeginner:
+    internal: true
