@@ -7,10 +7,10 @@ services:
       - db_efcorebeginner:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: saqib123!
       MYSQL_DATABASE: wordpress
       MYSQL_USER: saqibrazzaq
-      MYSQL_PASSWORD: pass
+      MYSQL_PASSWORD: saqib123!
     container_name: db_efcorebeginner
     networks:
       - net_efcorebeginner
@@ -26,7 +26,7 @@ services:
       VIRTUAL_HOST: saqibrazzaq.com
       WORDPRESS_DB_HOST: db_efcorebeginner:3306
       WORDPRESS_DB_USER: saqibrazzaq
-      WORDPRESS_DB_PASSWORD: pass
+      WORDPRESS_DB_PASSWORD: saqib123!
     container_name: wp_efcorebeginner
     networks:
       - nginx-proxy
