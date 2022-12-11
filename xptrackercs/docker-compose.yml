@@ -7,7 +7,7 @@ services:
     volumes:
       - xptrackercs_db:/var/opt/mssql/data
     environment:
-      SA_PASSWORD: "Saqib123!"
+      SA_PASSWORD: "password"
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Express"
     ports:

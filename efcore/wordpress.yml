@@ -7,10 +7,10 @@ services:
       - db_efcorebeginner:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: saqib123!
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
       MYSQL_USER: saqibrazzaq
-      MYSQL_PASSWORD: saqib123!
+      MYSQL_PASSWORD: password
     container_name: db_efcorebeginner
     networks:
       - net_efcorebeginner
@@ -28,7 +28,7 @@ services:
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       WORDPRESS_DB_HOST: db_efcorebeginner:3306
       WORDPRESS_DB_USER: saqibrazzaq
-      WORDPRESS_DB_PASSWORD: saqib123!
+      WORDPRESS_DB_PASSWORD: password
     container_name: wp_efcorebeginner
     networks:
       - nginx-proxy
