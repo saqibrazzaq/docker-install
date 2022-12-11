@@ -32,8 +32,8 @@ services:
       - nginx-proxy
       - net_efcorebeginner
 
-  volumes:
-    db_efcorebeginner:
+volumes:
+  db_efcorebeginner:
 
 networks:
   nginx-proxy:
