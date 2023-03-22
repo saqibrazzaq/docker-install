@@ -20,3 +20,17 @@ sudo docker compose stop
 
 sudo docker compose rm
 
+## Upload max file size for divi theme
+Open Docker terminal
+
+sudo docker exec -it <name> bash
+
+### Install nano
+apt-get update
+apt-get upgrade
+apt-get install nano
+
+### Create php.ini in public/html folder
+nano php.ini
+upload_max_filesize = 64M
+post_max_size = 128M
