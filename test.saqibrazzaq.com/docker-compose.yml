@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  db_test.saqibrazzaq.com:
+    image: mysql:5.7
+    volumes:
+      - db_test.saqibrazzaq.com:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: saqibrazzaq
+      MYSQL_PASSWORD: password
+    container_name: db_test.saqibrazzaq.com
+    networks:
+      - net_test.saqibrazzaq.com
+    
+  wp_test.saqibrazzaq.com:
+    depends_on:
+      - db_test.saqibrazzaq.com
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: always
+    environment:
+      VIRTUAL_HOST: test.saqibrazzaq.com
+      LETSENCRYPT_HOST: test.saqibrazzaq.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+      WORDPRESS_DB_HOST: db_test.saqibrazzaq.com:3306
+      WORDPRESS_DB_USER: saqibrazzaq
+      WORDPRESS_DB_PASSWORD: password
+    container_name: wp_test.saqibrazzaq.com
+    networks:
+      - nginx-proxy
+      - net_test.saqibrazzaq.com
+
+volumes:
+  db_test.saqibrazzaq.com:
+
+networks:
+  nginx-proxy:
+    external: true
+  net_test.saqibrazzaq.com:
+    internal: true
