@@ -61,5 +61,5 @@ volumes:
 networks:
   nginx-proxy:
     external: true
-  addressbook_db:
+  tareekh_db:
     internal: true
