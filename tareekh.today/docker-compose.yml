@@ -1,0 +1,65 @@
+version: '3.4'
+
+services:
+  api:
+    image: saqibrazzaq/tareekh_api
+    container_name: tareekh_api
+    depends_on:
+      - db
+    environment:
+      VIRTUAL_HOST: api.tareekh.today
+      LETSENCRYPT_HOST: api.tareekh.today
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+    env_file:
+      - api.env
+    expose:
+      - 80
+    networks:
+      - nginx-proxy
+      - tareekh_db
+    restart: always
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: tareekh_db
+    volumes:
+      - db_data:/var/opt/mssql/data
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    env_file:
+      - db.env
+    ports:
+      - "1433"
+    networks:
+      - tareekh_db
+    restart: always
+
+  web:
+    image: saqibrazzaq/tareekh_web
+    container_name: tareekh_web
+    environment:
+      VIRTUAL_HOST: tareekh.today
+      LETSENCRYPT_HOST: tareekh.today
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+      CHOKIDAR_USEPOLLING: "true"
+      REACT_APP_API_BASE_URL: https://api.tareekh.today/api
+    expose:
+      - 80
+    depends_on:
+      - api
+    networks:
+      - nginx-proxy
+    volumes:
+      - /app/node_modules
+      - ./person_web:/app
+    restart: always
+
+volumes:
+  db_data:
+
+networks:
+  nginx-proxy:
+    external: true
+  addressbook_db:
+    internal: true
