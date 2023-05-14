@@ -27,7 +27,9 @@ services:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       PROXY_ADDRESS_FORWARDING: "true"
-      KC_HOSTNAME: https://keycloack.efcorebeginner.com
+      KC_HOSTNAME: keycloack.efcorebeginner.com
+      KC_HOSTNAME_ADMIN_URL: https://keycloack.efcorebeginner.com
+      KC_HOSTNAME_PORT: 443
       KC_PROXY: edge
       KC_HTTPS_PORT: 443
       KC_HTTP_ENABLED: "false"
