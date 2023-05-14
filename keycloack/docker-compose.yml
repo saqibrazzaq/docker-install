@@ -25,21 +25,22 @@ services:
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
-      KEYCLOAK_HOSTNAME: keycloack.efcorebeginner.com
+      KC_HOSTNAME: keycloack.efcorebeginner.com
       PROXY_ADDRESS_FORWARDING: true
       REDIRECT_SOCKET: "proxy-https"
       KEYCLOAK_FRONTEND_URL: https://keycloak.efcorebeginner.com/auth
-      KEYCLOAK_HTTP_PORT: 80
-      KEYCLOAK_HTTPS_PORT: 443
+      KC_HTTPS_PORT: 443
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
+    expose:
+      - 443
     env_file:
       - keycloack.env
     networks:
       - keycloack_db
     restart: always
     ports:
-        - "8080:8080"
+        - "443"
     depends_on:
       - postgres
 
