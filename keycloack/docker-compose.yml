@@ -39,7 +39,7 @@ services:
       - keycloack.env
     networks:
       - keycloack_db
-    command: start
+    command: start --optimized
     restart: always
     depends_on:
       - postgres
