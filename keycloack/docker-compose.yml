@@ -25,10 +25,12 @@ services:
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
-      PROXY_ADDRESS_FORWARDING: "true"
-      REDIRECT_SOCKET: "proxy-https"
-      KEYCLOAK_FRONTEND_URL: https://keycloak.efcorebeginner.com/auth
+      KC_PROXY_ADDRESS_FORWARDING: "true"
+      KC_HOSTNAME_STRICT: "false"
+      KC_HOSTNAME: keycloack.efcorebeginner.com
+      KC_HOSTNAME_PORT: 443
       KC_PROXY: edge
+      KC_HTTP_ENABLED: "true"
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     env_file:
@@ -41,6 +43,7 @@ services:
       - 443
     ports:
         - "80:80"
+        - "443:443"
     depends_on:
       - postgres
 
