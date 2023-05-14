@@ -44,7 +44,7 @@ services:
     networks:
       - keycloack_db
     command: 
-      - start --optimized --verbose
+      - start --optimized
     restart: always
     depends_on:
       - postgres
