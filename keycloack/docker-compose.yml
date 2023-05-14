@@ -23,6 +23,8 @@ services:
       VIRTUAL_HOST: keycloack.efcorebeginner.com
       LETSENCRYPT_HOST: keycloack.efcorebeginner.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+      VIRTUAL_PORT: "80"
+      HTTPS_METHOD: redirect
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       PROXY_ADDRESS_FORWARDING: "true"
