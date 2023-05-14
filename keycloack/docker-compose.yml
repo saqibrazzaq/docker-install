@@ -23,13 +23,11 @@ services:
       VIRTUAL_HOST: keycloack.efcorebeginner.com
       LETSENCRYPT_HOST: keycloack.efcorebeginner.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-      VIRTUAL_PORT: "80"
       HTTPS_METHOD: redirect
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
-      PROXY_ADDRESS_FORWARDING: "true"
-      AUTH_PROFILE: basicAuth
-      KEYCLOAK_HOSTNAME: fqdn
+      PROXY_ADDRESS_FORWARDING: true
+      hostname: keycloack.efcorebeginner.com
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     env_file:
