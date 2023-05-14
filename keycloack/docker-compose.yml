@@ -41,7 +41,9 @@ services:
       - keycloack.env
     networks:
       - keycloack_db
-    command: start --optimized
+    command: 
+      - start --optimized
+      - --https-port=443
     restart: always
     depends_on:
       - postgres
