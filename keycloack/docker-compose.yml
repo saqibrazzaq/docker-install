@@ -28,6 +28,7 @@ services:
       DB_ADDR: postgres
       PROXY_ADDRESS_FORWARDING: "true"
       HTTPS_METHOD: redirect
+      KC_HOSTNAME: keycloack.efcorebeginner.com
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     ports:
