@@ -20,7 +20,6 @@ services:
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
     ports:
       - "80:80"
-      - "443:443"
     env_file:
       - pgadmin4.env
     volumes:
