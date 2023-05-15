@@ -1,53 +1,23 @@
 version: '3.7'
 
-volumes:
-  postgres_data:
-    driver: local
-
 services:
-  postgres:
-    image: postgres
-    container_name: keycloack_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    env_file:
-      - postgres.env
-    networks:
-      - nginx-proxy
-      - keycloack_db
-    restart: always
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloack
     environment:
-      VIRTUAL_HOST: keycloack.efcorebeginner.com
-      LETSENCRYPT_HOST: keycloack.efcorebeginner.com
-      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-      VIRTUAL_PORT: "443"
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
-      PROXY_ADDRESS_FORWARDING: "true"
-      KC_HOSTNAME: keycloack.efcorebeginner.com
-      KC_HOSTNAME_ADMIN_URL: https://keycloack.efcorebeginner.com
-      KC_HOSTNAME_PORT: 443
-      KC_PROXY: reencrypt
-      KC_HTTPS_PORT: 443
-      KC_HTTP_ENABLED: "false"
-      KC_HTTPS_ENABLED: "true"
-      KC_HOSTNAME_STRICT_HTTPS: "true"
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     ports:
-      - 443:8443
+      - 8080:8080
     env_file:
       - keycloack.env
     networks:
-      - keycloack_db
+      - nginx-proxy
     command: 
       - start --optimized
     restart: always
-    depends_on:
-      - postgres
 
 networks:
   nginx-proxy:
