@@ -16,8 +16,10 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin4
     restart: always
+    PGADMIN_ENABLE_TLS: true
     ports:
       - "480:80"
+      - "4443:443"
     env_file:
       - pgadmin4.env
     volumes:
