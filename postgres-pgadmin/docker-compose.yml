@@ -18,8 +18,6 @@ services:
       VIRTUAL_HOST: pgadmin.efcorebeginner.com
       LETSENCRYPT_HOST: pgadmin.efcorebeginner.com
       LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-    ports:
-      - "80:80"
     env_file:
       - pgadmin4.env
     volumes:
