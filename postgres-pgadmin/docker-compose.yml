@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file:
+      - postgres.env
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    restart: always
+    environment:
+      VIRTUAL_HOST: pgadmin.efcorebeginner.com
+      LETSENCRYPT_HOST: pgadmin.efcorebeginner.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - pgadmin4.env
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
