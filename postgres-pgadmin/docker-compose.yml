@@ -16,11 +16,8 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin4
     restart: always
-    environment:
-      VIRTUAL_HOST: pgadmin.efcorebeginner.com
-      LETSENCRYPT_HOST: pgadmin.efcorebeginner.com
-      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
-      PGADMIN_ENABLE_TLS: true
+    ports:
+      - "480:80"
     env_file:
       - pgadmin4.env
     volumes:
