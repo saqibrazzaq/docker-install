@@ -5,6 +5,9 @@ services:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak
     environment:
+      VIRTUAL_HOST: efcorebeginner.com
+      LETSENCRYPT_HOST: efcorebeginner.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       KC_HEALTH_ENABLED: true
