@@ -28,7 +28,7 @@ services:
     networks:
       - nginx-proxy
     command: 
-      - start --verbose #--optimized
+      - start-dev #--optimized
     # restart: always
     volumes:
       - certs:/etc/nginx/certs:ro
