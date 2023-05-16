@@ -7,8 +7,9 @@ services:
     environment:
       VIRTUAL_HOST: keycloak.efcorebeginner.com
       LETSENCRYPT_HOST: keycloak.efcorebeginner.com
-      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+      LETSENCRYPT_EMAIL: saqibrazzaq@gmail.com
       VIRTUAL_PORT: "8080"
+      KC_HOSTNAME: keycloak.efcorebeginner.com
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       KC_HEALTH_ENABLED: true
