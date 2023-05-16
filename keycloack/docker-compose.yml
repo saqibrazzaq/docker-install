@@ -25,11 +25,7 @@ services:
     command: 
       - start #--optimized
     restart: unless-stopped
-    volumes:
-      - certs:/etc/nginx/certs:ro
-      - ./fullchain.pem:/etc/nginx/certs/keycloak.efcorebeginner.com.crt
-      - ./privatekey.pem:/etc/nginx/certs/keycloak.efcorebeginner.com.key
-
+    
 networks:
   nginx-proxy:
     external: true
