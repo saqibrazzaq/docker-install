@@ -28,6 +28,8 @@ services:
     command: 
       - start-dev #--optimized
     # restart: always
+    volumes:
+      - certs:/etc/nginx/certs:ro
 
 networks:
   nginx-proxy:
