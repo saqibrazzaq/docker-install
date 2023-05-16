@@ -13,14 +13,14 @@ services:
       KC_HEALTH_ENABLED: true
       KC_METRICS_ENABLED: true
       KC_HOSTNAME: efcorebeginner.com
-      KC_HTTP_ENABLED: true
+      # KC_HTTP_ENABLED: true
       KC_HOSTNAME_STRICT: false
       KC_HOSTNAME_STRICT_HTTPS: false
       PROXY_ADDRESS_FORWARDING: true
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     ports:
-      - 8080:8080
+      - 8443:8443
     env_file:
       - keycloack.env
     networks:
