@@ -25,8 +25,8 @@ services:
       - keycloack.env
     networks:
       - nginx-proxy
-    # command: 
-    #   - start #--optimized
+    command: 
+      - start-dev #--optimized
     # restart: always
 
 networks:
