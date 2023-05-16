@@ -12,13 +12,8 @@ services:
       DB_ADDR: postgres
       KC_HEALTH_ENABLED: true
       KC_METRICS_ENABLED: true
-      KC_HOSTNAME: keycloak.efcorebeginner.com
-      # KC_HTTP_ENABLED: true
-      KC_HOSTNAME_STRICT: false
-      KC_HOSTNAME_STRICT_HTTPS: false
+      HTTPS_METHOD: redirect
       PROXY_ADDRESS_FORWARDING: true
-      # KC_HTTPS_CERTIFICATE_FILE: :/etc/nginx/certs/keycloak.efcorebeginner.com.crt
-      # KC_HTTPS_CERTIFICATE_KEY_FILE: :/etc/nginx/certs/keycloak.efcorebeginner.com.key
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     # ports:
@@ -29,7 +24,7 @@ services:
       - nginx-proxy
     command: 
       - start #--optimized
-    # restart: always
+    restart: unless-stopped
     volumes:
       - certs:/etc/nginx/certs:ro
       - ./fullchain.pem:/etc/nginx/certs/keycloak.efcorebeginner.com.crt
@@ -38,8 +33,3 @@ services:
 networks:
   nginx-proxy:
     external: true
-  keycloack_db:
-    internal: true
-
-volumes:
-  certs:
