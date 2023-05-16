@@ -36,3 +36,6 @@ networks:
     external: true
   keycloack_db:
     internal: true
+
+volumes:
+  certs:
