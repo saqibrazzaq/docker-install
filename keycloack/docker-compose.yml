@@ -27,7 +27,7 @@ services:
       - nginx-proxy
     command: 
       - start --optimized
-    restart: always
+    # restart: always
 
 networks:
   nginx-proxy:
