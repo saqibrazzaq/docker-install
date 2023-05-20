@@ -55,6 +55,26 @@ services:
       - ./person_web:/app
     restart: always
 
+  web_admin:
+    image: saqibrazzaq/tareekh_web_admin
+    container_name: tareekh_web_admin
+    environment:
+      VIRTUAL_HOST: admin.tareekh.today
+      LETSENCRYPT_HOST: admin.tareekh.today
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+      CHOKIDAR_USEPOLLING: "true"
+      REACT_APP_API_BASE_URL: https://api.tareekh.today/api
+    expose:
+      - 80
+    depends_on:
+      - api
+    networks:
+      - nginx-proxy
+    volumes:
+      - /app/node_modules
+      - ./person_web_admin:/app
+    restart: always
+
 volumes:
   db_data:
 
