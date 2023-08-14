@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  db_zafar.saqibrazzaq.com:
+    image: mysql:5.7
+    volumes:
+      - db_zafar.saqibrazzaq.com:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: saqibrazzaq
+      MYSQL_PASSWORD: password
+    container_name: db_zafar.saqibrazzaq.com
+    networks:
+      - net_zafar.saqibrazzaq.com
+    
+  wp_zafar.saqibrazzaq.com:
+    depends_on:
+      - db_zafar.saqibrazzaq.com
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: always
+    environment:
+      VIRTUAL_HOST: zafar.saqibrazzaq.com
+      LETSENCRYPT_HOST: zafar.saqibrazzaq.com
+      LETSENCRYPT_EMAIL: "saqibrazzaq@gmail.com"
+      WORDPRESS_DB_HOST: db_zafar.saqibrazzaq.com:3306
+      WORDPRESS_DB_USER: saqibrazzaq
+      WORDPRESS_DB_PASSWORD: password
+    container_name: wp_zafar.saqibrazzaq.com
+    networks:
+      - nginx-proxy
+      - net_zafar.saqibrazzaq.com
+
+volumes:
+  db_zafar.saqibrazzaq.com:
+
+networks:
+  nginx-proxy:
+    external: true
+  net_zafar.saqibrazzaq.com:
+    internal: true
