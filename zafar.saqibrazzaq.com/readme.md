@@ -34,3 +34,6 @@ apt-get install nano
 nano php.ini
 upload_max_filesize = 64M
 post_max_size = 128M
+
+### Restart apache on docker
+sudo /etc/init.d/apache2 restart

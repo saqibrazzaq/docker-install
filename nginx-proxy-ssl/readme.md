@@ -6,11 +6,16 @@ New containers will automatically support SSL, no need to configure individually
 ## Create network nginx-proxy
 docker network create nginx-proxy
 
-## Create nginx-proxy
-sudo docker compose -f nginx-proxy-ssl.yml create
+## Create image
+sudo docker compose up -d
 
-sudo docker compose -f nginx-proxy-ssl.yml start
+## Create new user
+adduser username
+usermod -aG sudo username
+id username
+su - username
+sudo ls -l /etc/shadow
 
-sudo docker compose -f nginx-proxy-ssl.yml stop
+## Install Docker
+https://docs.docker.com/engine/install/ubuntu/
 
-sudo docker compose -f nginx-proxy-ssl.yml rm
