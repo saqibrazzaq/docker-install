@@ -1,21 +1,5 @@
-## Create network nginx-proxy
-docker network create nginx-proxy
-
-## Create nginx-proxy
-sudo docker compose -f nginx-proxy.yml create
-
-sudo docker compose -f nginx-proxy.yml start
-
-sudo docker compose -f nginx-proxy.yml stop
-
-sudo docker compose -f nginx-proxy.yml rm
+## Pre-req
+nginx proxy with ssl should be already installed and running
 
 ## Create wordpress instances
-sudo docker compose -f wordpress.yml create
-
-sudo docker compose -f wordpress.yml start
-
-sudo docker compose -f wordpress.yml stop
-
-sudo docker compose -f wordpress.yml rm
-
+sudo docker compose up -d
