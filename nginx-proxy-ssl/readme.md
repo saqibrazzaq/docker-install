@@ -19,3 +19,15 @@ sudo ls -l /etc/shadow
 ## Install Docker
 https://docs.docker.com/engine/install/ubuntu/
 
+## Update max file size in nginx
+Open docker terminal nginx-proxy
+sudo docker exec -it <name> bash
+
+Edit the following file
+nano /etc/nginx/nginx.conf
+
+Add the following line in the http block
+client_max_body_size 20M;
+
+Quit image and restart nginx-proxy
+docker exec nginx-proxy nginx -s reload
