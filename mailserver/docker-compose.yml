@@ -22,7 +22,7 @@ services:
       - ./docker-data/dms/mail-logs/:/var/log/mail/
       - ./docker-data/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
-      - ./etc/nginx/certs/:/etc/letsencrypt/live/:ro
+      - certs:/etc/nginx/certs:ro
     restart: always
     stop_grace_period: 1m
     # Uncomment if using `ENABLE_FAIL2BAN=1`:
@@ -38,3 +38,6 @@ services:
 networks:
   nginx-proxy:
     external: true
+
+volumes:
+  certs:
