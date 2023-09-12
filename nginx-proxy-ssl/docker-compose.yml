@@ -45,6 +45,7 @@ volumes:
   dhparam:
   certs:
   acme:
+  SSLCerts:
 
 networks:
   nginx-proxy:
