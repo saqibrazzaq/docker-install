@@ -46,6 +46,7 @@ volumes:
   certs:
   acme:
   SSLCerts:
+    external: true
 
 networks:
   nginx-proxy:
